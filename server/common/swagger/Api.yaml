@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: myapp
+  description: My cool TypeScript app
+  contact: {}
+  version: '1.0.0'
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+paths:
+  /examples:
+    get:
+      tags:
+      - Examples
+      summary: Examples_GET
+      description: Fetch all examples
+      operationId: ExamplesGet
+      parameters: []
+      responses:
+        200:
+          description: Returns all examples
+          headers: {}
+      deprecated: false
+  /examples/{id}:
+    get:
+      tags:
+      - Examples
+      summary: ExamplesById_GET
+      description: ''
+      operationId: ExamplesbyidGet
+      parameters:
+      - name: id
+        in: path
+        description: The id of the example to retrieve
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: Return the example with the specified id
+          headers: {}
+        404:
+          description: Example not found
+      deprecated: false
+  /spec:
+    get:
+      tags:
+      - Specification
+      summary: Spec_GET
+      description: ''
+      operationId: SpecGet
+      parameters: []
+      responses:
+        200:
+          description: Return the API specification
+          headers: {}
+      deprecated: false
+tags:
+- name: Examples
+  description: Simple example endpoints
+- name: Specification
+  description: The swagger API specification
